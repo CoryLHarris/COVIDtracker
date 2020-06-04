@@ -20,3 +20,8 @@ export const fetchData = async () => {
   }
 }
 
+export const dailyData =async () => {
+  try {
+    const response = await axios.get(`${url}/daily`)
+  } catch
+}
