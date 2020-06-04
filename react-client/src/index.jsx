@@ -1,38 +1,57 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import NasaBlock from './components/NasaBlock.jsx';
+import CovidAll from './components/CovidAll.jsx';
 import Axios from 'axios';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: [],
-      nasa: 42
+      CovidUSHist: [],
+      CovidAll: []
     }
-    this.getPicOfDay = this.getPicOfDay.bind(this);
+    this.getCovid = this.getCovid.bind(this);
+    this.getCovidUSH = this.getCovidUSH.bind(this);
   }
 
   componentDidMount() {
-    this.getPicOfDay()
+    this.getCovid()
+    this.getCovidUSH()
   }
-
-  getPicOfDay(){
-    Axios.get('/picOfDay')
+//get by USA STATE
+  getCovid(){
+    Axios.get('/api')
     .then(response => {
-      console.log(response)
+      console.log(response.data)
+      //this.setState({ CovidAll: response.data })
+      this.setState({CovidAll:response.data})
     })
     .catch(err => {
-      console.log(err, ' failed to get pic of the day in client')
-      this.setState({ nasa: response.data })
+      console.log(err, ' failed to get covid in client')
+
+    })
+  }
+//get history USA
+  getCovidUSH(){
+    Axios.get('/api/history')
+    .then(response => {
+      console.log(response.data,"this was history")
+
+      this.setState({CovidUSHist:response.data})
+    })
+    .catch(err => {
+      console.log(err, ' failed to get covid in client')
     })
   }
 
   render () {
-    return (<div>
-      <h1>Jeopardy</h1>
-      <NasaBlock data={this.state.nasa} />
-    </div>)
+    return (
+    <div>
+      <h1>App</h1>
+    </div>
+
+    <div><CovidAll data={this.state.CovidAll} /></div>
+    )
   }
 }
 
