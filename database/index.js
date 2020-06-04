@@ -1,31 +1,33 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
+const { connection, API_KEY } = require('../server/config');
 
-var db = mongoose.connection;
+//mongoose.connect('mongodb://localhost/test');
 
-db.on('error', function() {
-  console.log('mongoose connection error');
-});
+//var db = mongoose.connection;
 
-db.once('open', function() {
-  console.log('mongoose connected successfully');
-});
+// db.on('error', function() {
+//   console.log('mongoose connection error');
+// });
 
-var itemSchema = mongoose.Schema({
-  quantity: Number,
-  description: String
-});
+// db.once('open', function() {
+//   console.log('mongoose connected successfully');
+// });
 
-var Item = mongoose.model('Item', itemSchema);
+// var itemSchema = mongoose.Schema({
+//   quantity: Number,
+//   description: String
+// });
 
-var selectAll = function(callback) {
-  Item.find({}, function(err, items) {
-    if(err) {
-      callback(err, null);
-    } else {
-      callback(null, items);
-    }
-  });
-};
+//var Item = mongoose.model('Item', itemSchema);
 
-module.exports.selectAll = selectAll;
+// var selectAll = function(callback) {
+//   Item.find({}, function(err, items) {
+//     if(err) {
+//       callback(err, null);
+//     } else {
+//       callback(null, items);
+//     }
+//   });
+// };
+
+//module.exports.selectAll = selectAll;
