@@ -46,11 +46,16 @@ class App extends React.Component {
 
   render () {
     return (
-    <div>
-      <h1>App</h1>
-    </div>
+      <div>
+      
+        <div>
+          <h1>App</h1>
+        </div>
 
-    <div><CovidAll data={this.state.CovidAll} /></div>
+        <div>
+        <CovidAll data={this.state.CovidAll} />
+        </div>
+      </div>
     )
   }
 }
