@@ -1,6 +1,6 @@
 import React from 'react';
 
 const CovidState = (props) => (
- <div> hello world!</div>
+ <div></div>
 );
 export default CovidState;

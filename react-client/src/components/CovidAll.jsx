@@ -4,7 +4,7 @@ import CovidState from "./CovidState.jsx";
 const CovidAll = ({data}) => (
 
    <div className = "CovidAll">
-    <h4 className = "CovidAll-date">Title.CovidAll.jsx</h4>
+    <h4 className = "CovidAll-date"></h4>
     <div>
     {
       data.map((StateData) =>(
