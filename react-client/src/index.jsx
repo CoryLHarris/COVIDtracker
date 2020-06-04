@@ -1,6 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import CovidAll from './components/CovidAll.jsx';
+
+import Cards from './components/Cards/Cards.jsx';
+import Chart from './components/Chart/Chart.jsx';
+import Country from './components/Country/Country.jsx';
+import styles from './index.module.css';
+
+//api global functions
+import {fetchData } from './api'
 import Axios from 'axios';
 
 class App extends React.Component {
@@ -8,15 +16,20 @@ class App extends React.Component {
     super(props);
     this.state = {
       CovidUSHist: [],
-      CovidAll: []
+      CovidAll: [],
+      dataG: {}
     }
     this.getCovid = this.getCovid.bind(this);
     this.getCovidUSH = this.getCovidUSH.bind(this);
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    //async fetching global data from api folder function
+    const dataFetched = await fetchData()
+    this.setState({ dataG:dataFetched })
     this.getCovid()
     this.getCovidUSH()
+    //console.log("dataFetched: ",dataFetched)
   }
 //get by USA STATE
   getCovid(){
@@ -46,15 +59,18 @@ class App extends React.Component {
 
   render () {
     return (
-      <div>
-      
-        <div>
-          <h1>App</h1>
+      <div  >
+
+        <div className={styles.container}>
+          <Cards Gdata={this.state.dataG}/>
+          <Country />
+          <Chart />
         </div>
 
         <div>
-        <CovidAll data={this.state.CovidAll} />
+          <CovidAll data={this.state.CovidAll} />
         </div>
+
       </div>
     )
   }
