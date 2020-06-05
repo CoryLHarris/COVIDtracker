@@ -1,49 +1,49 @@
-// import React, {useState,useEffect} from 'react';
-// import {dailyData} from '../../asyncHelpers';
-// import { Line, Bar } from 'react-chartjs-2';
-// import styles from "./Chart.module.css"
+  import React, {useState,useEffect} from 'react';
+  import {USDailyData} from '../../asyncHelpers';
+  import { Line, Bar } from 'react-chartjs-2';
+  import styles from "./USChart.module.css"
 
 
 
 
-// const Chart = () => {
-//   const [daily, setDaily] = useState([]);
+const USChart = () => {
+  const [USdaily, setUSDaily] = useState([]);
 
-//   useEffect( ()=> {
-//     const fetching = async () => {
-//       //let daily = await dailyData();
-//       setDaily(await dailyData());
-//     }
+  useEffect( ()=> {
+    const fetchingUSD = async () => {
+      //let daily = await dailyData();
+      setUSDaily(await USDailyData());
+    }
 
-//     fetching()
-//   }, [] );
+    fetchingUSD()
+  }, [] );
 
 
-//   let lineChart = (
+  let lineChart = (
 
-//     daily.length ? (<Line
-//       data={{
-//       labels: daily.map(({date}) => date),
-//       datasets: [{
-//         data: daily.map(({ deaths }) => deaths),
-//         label: 'Deaths',
-//         borderColor: "red",
-//         backgroundColor:'rgba(255,0,0,0.3)',
-//         fill: true,
-//       },
-//       {
-//         data: daily.map(({ confirmed }) => confirmed),
-//         label: 'Infected',
-//         borderColor:"blue",
-//         backgroundColor:'rgba(0,0,255,0.3)',
-//         fill: true,
-//       }]
-//       }} />) : null
-//   );
+    USdaily.length ? (<Line
+      data={{
+      labels: USdaily.map(({date}) =>date),
+      datasets: [{
+        data: USdaily.map(({ deaths }) => deaths),
+        label: 'Deaths',
+        borderColor: "red",
+        backgroundColor:'rgba(255,0,0,0.3)',
+        fill: true,
+      },
+      {
+        data: USdaily.map(({ confirmed }) => confirmed),
+        label: 'Infected',
+        borderColor:"blue",
+        backgroundColor:'rgba(0,0,255,0.3)',
+        fill: true,
+      }]
+      }} />) : null
+  );
 
-//   return (
-//     <div className={styles.container}>{lineChart}</div>
-//   )
-// }
+  return (
+    <div className={styles.container}>{lineChart}</div>
+  )
+}
 
-// export default Chart;
+export default USChart;
