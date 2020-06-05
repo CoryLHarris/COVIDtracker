@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import CovidAll from './components/CovidAll.jsx';
+import CovidAll from './components/CovidAll/CovidAll.jsx';
 
-import Cards from './components/Cards/Cards.jsx';
+import Display from './components/Display/Display.jsx';
 import Chart from './components/Chart/Chart.jsx';
 import Country from './components/Country/Country.jsx';
 import styles from './index.module.css';
 
 //api global functions
-import {fetchData } from './api'
+import {fetchData, USFetchData } from './asyncHelpers'
 import Axios from 'axios';
 
 class App extends React.Component {
@@ -17,25 +17,27 @@ class App extends React.Component {
     this.state = {
       CovidUSHist: [],
       CovidAll: [],
-      dataG: {}
+      dataG: {},
+      dataUS:{}
     }
     this.getCovid = this.getCovid.bind(this);
     this.getCovidUSH = this.getCovidUSH.bind(this);
   }
 
   async componentDidMount() {
-    //async fetching global data from api folder function
-    const dataFetched = await fetchData()
-    this.setState({ dataG:dataFetched })
+    //async fetching global data from api helper folder functions
+    const dataFetched = await fetchData();
+    const USDataFetched = await USFetchData();
+    this.setState({ dataG:dataFetched, dataUS:USDataFetched })
     this.getCovid()
     this.getCovidUSH()
-    //console.log("dataFetched: ",dataFetched)
+
   }
 //get by USA STATE
   getCovid(){
     Axios.get('/api')
     .then(response => {
-      console.log(response.data)
+
       //this.setState({ CovidAll: response.data })
       this.setState({CovidAll:response.data})
     })
@@ -48,7 +50,6 @@ class App extends React.Component {
   getCovidUSH(){
     Axios.get('/api/history')
     .then(response => {
-      console.log(response.data,"this was history")
 
       this.setState({CovidUSHist:response.data})
     })
@@ -57,18 +58,19 @@ class App extends React.Component {
     })
   }
 
+
   render () {
     return (
       <div  >
 
         <div className={styles.container}>
-          <Cards Gdata={this.state.dataG}/>
           <Country />
           <Chart />
+          <Display Gdata={this.state.dataG}/>
         </div>
 
         <div>
-          <CovidAll data={this.state.CovidAll} />
+          <CovidAll data={this.state.dataUS} />
         </div>
 
       </div>
