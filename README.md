@@ -1,4 +1,4 @@
-# Project Name #
+# COVID Data Tracker#
 
 <!--
 > This material was originally posted [here](http://www.quora.com/What-is-Amazons-approach-to-product-development-and-product-management). It is reproduced here for posterities sake.
@@ -22,22 +22,11 @@ Once the project moves into development, the press release can be used as a touc
 ## Sub-Heading ##
   >
 ## Summary ##
-  > Universal Travel is an application to integrate data sourced from many vendors into one easy to manage pricing tool. This saves time for travel booking as well as research for the travel enthusiast
+  > Covid tracking is an application to integrate data sourced from many reputable vendors into one easy data visualization tool. Thia allows easy access to factual data on the current state of the world by COVID 19 death, recovery and current active case stats.
 
 ## Problem ##
-  > Describe the problem your product solves.
+  > Misinformation in regards to COVID is causing many people to base important choices on false statistics or faulty data. 
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
+  > This app is a way to quickly look at a country before travelling there to see its stats and know how COVID is impacting that area.
 
-## Quote from You ##
-  > A quote from a spokesperson in your company.
-
-## How to Get Started ##
-  > Describe how easy it is to get started.
-
-## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
-
-## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
